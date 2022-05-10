@@ -20,14 +20,16 @@ export default function CartIcon ({cartCounter}) {
         width:"52px",
     }
 
-
+    const bStyle = {
+        color:"#fff",
+    }
     return(
         <div className="container" style={containerStyle}>
             <div className="cartContainer" style={cartContainerStyle} >
                 <a href="#">
                     <img src="../cart.png" style={imgStyle}/>
                 </a>
-                <b>{cartCounter}</b>
+                <b style={bStyle}>{cartCounter}</b>
             </div>
         </div>
     )

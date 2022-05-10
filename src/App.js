@@ -1,11 +1,16 @@
-import CartIcon from "./components/CartIcon/CartIcon.js";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer.js";
+import Navbar from "./components/NavBar/Navbar.js";
 
 function App() {
   return (
+    <>
     <div className="App">
-      <CartIcon cartCounter={"8"}/>
+        
+        <Navbar/>
+        <ItemListContainer/>
     </div>
+    
+    </>
   );
 }
-
 export default App;
