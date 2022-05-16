@@ -1,18 +1,25 @@
-export default function ItemListContainer ({greeting}) {
-    
+import React from "react"
+import ItemList from "../ItemList/ItemList.js"
+export default function ItemListContainer () {
+
+/*---------------------------------FUNCIONES MOD-------------------------------------*
+
+
+/*-----------------------------------ESTILOS-----------------------------------------*/    
     const catalogoContainerStyle = {
         display:"flex",
-        justifyContent:"center",
+        justifyContent:"space-between",
         alignItems:"center",
-        height:"400px",
-        fontSize:"50px",
+        width:"100%", 
+        heigth:"500px",
+        backgroundColor:"#111"
+
         
     }
-    
+        
     return (
         <div className="catalogoContainer" style={catalogoContainerStyle}>
-            {greeting}
+            <ItemList />
         </div>
-        
     )
 }

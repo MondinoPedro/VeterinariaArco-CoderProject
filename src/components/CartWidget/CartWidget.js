@@ -1,4 +1,4 @@
-export default function CartIcon ({cartCounter}) { 
+export default function CartWidget ({cartCounter}) { 
 
 
     const containerStyle = {
@@ -12,7 +12,7 @@ export default function CartIcon ({cartCounter}) {
         alignItems:"center",
         justifyContent:"center",
         fontSize:"20px",
-        color:"#010101",
+        color:"#111",
     }
 
 
@@ -21,7 +21,7 @@ export default function CartIcon ({cartCounter}) {
     }
 
     const bStyle = {
-        color:"#fff",
+        color:"#111",
     }
     return(
         <div className="container" style={containerStyle}>

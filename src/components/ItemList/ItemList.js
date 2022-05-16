@@ -17,7 +17,7 @@ export default function ItemList(){
         alignItems:"center",
         width:"100%", 
         heigth:"500px",
-        backgroundColor:"#111"
+        backgroundColor:"#ccc"
     }
 
     return(

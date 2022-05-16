@@ -1,16 +1,19 @@
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer.js";
-import Navbar from "./components/NavBar/Navbar.js";
+
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer.js";
+
 
 function App() {
   return (
     <>
     <div className="App">
-        
-        <Navbar/>
-        <ItemListContainer/>
+      <ItemDetailContainer/>
     </div>
     
     </>
   );
 }
 export default App;
+
+
+/*<Navbar/>
+<ItemListContainer/>*/
