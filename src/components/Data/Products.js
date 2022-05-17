@@ -1,10 +1,11 @@
 export const Products = [
 {
     id: 1,
-    stock:0,
+    stock:7,
     title: "ProPlan Adulto x20KG",
-    price:"Precio: $4000",
+    price:2500,
     image: "../proplanadulto.png",
+    description: "El alimento ProPlan ofrece una gran variedad de proteinas y nutrientes para el cuidado de tu mascota. La marca Nº1 en Argentina!",
     
 },
 
@@ -12,16 +13,18 @@ export const Products = [
     id: 2,
     stock:8,
     title: "Natural Adulto x15KG",
-    price:"Precio: $2500",
-    image: "../proplanadulto.png"
+    price:2500,
+    image: "../proplanadulto.png",
+    description: "El alimento ProPlan ofrece una gran variedad de proteinas y nutrientes para el cuidado de tu mascota. La marca Nº1 en Argentina!",
 },
 
 {
     id: 3,
     stock:5,
     title: "OldPrince Puppy x3KG",
-    price:"$2000",
-    image: "../proplanadulto.png"
+    price:200,
+    image: "../proplanadulto.png",
+    description: "El alimento ProPlan ofrece una gran variedad de proteinas y nutrientes para el cuidado de tu mascota. La marca Nº1 en Argentina!",
 },
 
 

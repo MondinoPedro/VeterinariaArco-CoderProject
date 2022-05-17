@@ -1,25 +1,22 @@
 import React from "react"
 import ItemList from "../ItemList/ItemList.js"
+import { Products } from "../Data/Products.js"
 export default function ItemListContainer () {
 
-/*---------------------------------FUNCIONES MOD-------------------------------------*
+/*---------------------------------FUNCIONES MOD-------------------------------------*/
 
-
+    const [product, setProduct]=React.useState([])
+    
+    const task = new Promise(resolve=>{
+        setTimeout(()=>{
+            resolve(Products)
+        },2000)
+    })
+    task.then(res =>setProduct(res))
 /*-----------------------------------ESTILOS-----------------------------------------*/    
-    const catalogoContainerStyle = {
-        display:"flex",
-        justifyContent:"space-between",
-        alignItems:"center",
-        width:"100%", 
-        heigth:"500px",
-        backgroundColor:"#111"
-
-        
-    }
-        
     return (
-        <div className="catalogoContainer" style={catalogoContainerStyle}>
-            <ItemList />
-        </div>
+        
+            <ItemList p={product}/>
+        
     )
 }

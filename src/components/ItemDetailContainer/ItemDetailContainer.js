@@ -9,15 +9,20 @@ export default function ItemDetailContainer(){
         const getData= new Promise(resolve=>{
             setTimeout(()=>{
                 resolve(Products[0]);
-            }, 2000);
+            });
         });
         getData.then(res=>setData(res));
-    }, [])
+    }, []);
     
-    
+    const bodyStyle={
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+    }
     return(
-        
-        <ItemDetail data={data}/>
+        <body style={bodyStyle}>
+            <ItemDetail data={data}/>
+        </body>
     )
     
 }

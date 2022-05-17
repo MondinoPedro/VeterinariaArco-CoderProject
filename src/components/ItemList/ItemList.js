@@ -1,15 +1,8 @@
-import { Products } from "../Data/Products.js"
+
 import Item from "../Item/Item.js"
 
-export default function ItemList(){
-    const task = new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve(Products)
-        },2000)
-    })
-    task.then(res => {
-        console.log(res)
-    })
+export default function ItemList({p}){
+
 
     const itemListStyle ={
         display:"flex",
@@ -17,12 +10,12 @@ export default function ItemList(){
         alignItems:"center",
         width:"100%", 
         heigth:"500px",
-        backgroundColor:"#ccc"
+        backgroundColor:"#928"
     }
 
     return(
       <div className="ItemList" style={itemListStyle}>
-          {Products.map((product,index)=>(
+          {p.map((product,index)=>(
               <Item product={product} key={product.id}/>
           )
           )}
