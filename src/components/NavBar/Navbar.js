@@ -1,20 +1,22 @@
 import { findByLabelText } from "@testing-library/react";
+import { Link } from "react-router-dom"
 import CartWidget from "../CartWidget/CartWidget.js";
 
 export default function Navbar(){
     const containerStyle = {
-
+      
     }
     
     const headerStyle = {
         display:"flex",
         alignItems:"center",
-        backgroundColor: "#999",
+        backgroundColor: "#444",
         width: "100%",
         height:"80px",
+        borderBottom:"2px solid #111",
     }
     const headerIconoStyle = {
-        color:"#000",
+        color:"#fff",
         width:"10%",
         paddingLeft:"20px",
         textDecoration:"none",
@@ -30,24 +32,25 @@ export default function Navbar(){
         marginLeft:"30px",
     }
     const linksStyle = {
-        color:"#010101",
+        color:"#111",
         textDecoration:"none",
         fontSize:"26px",
 
     }
     const letterIconoStyle = {
         letterSpacing:"-8px",
+        color:"#111"
     }
     return(
         <>
         <div className="container" style={containerStyle}>
             <header className="header" style={headerStyle}>
-                <a className="header-icono" href="#" style={headerIconoStyle}><b className="icono-letter" style={letterIconoStyle}>MP</b></a>
+                <Link className="header-icono" to="/" style={headerIconoStyle}><b className="icono-letter" style={letterIconoStyle}>MP</b></Link>
                 <ul className="header-links" style={headerLinksStyle}>
-                    <li><a href="#" style={linksStyle}><h5 className="link-name">Inicio</h5></a></li>
-                    <li><a href="#" style={linksStyle}><h5 className="link-name">Nuestros Productos</h5></a></li>
-                    <li><a href="#" style={linksStyle}><h5 className="link-name">Sobre Nosotros</h5></a></li>
-                    <li><a href="#" style={linksStyle}><h5 className="link-name">Mi perfil</h5></a></li>
+                    <li><Link to="/" style={linksStyle}><h5 className="link-name">Inicio</h5></Link></li>
+                    <li><Link to="/category/1" style={linksStyle}><h5 className="link-name">Perros</h5></Link></li>
+                    <li><Link to="/category/2" style={linksStyle}><h5 className="link-name">Gatos</h5></Link></li>
+                    <li><Link to="#" style={linksStyle}><h5 className="link-name">Mi perfil</h5></Link></li>
                     <CartWidget cartCounter={"8"}/>
                 </ul>
                 
