@@ -1,11 +1,12 @@
-import ItemListContainer from "../../components/ItemListContainer/ItemListContainer"
-
+import ItemDetailContainer from "../../components/ItemDetailContainer/ItemDetailContainer"
+import { useParams } from "react-router-dom"
 
 export default function Products() {
+
+    const {productId} = useParams()
     return(
         <div>
-            Productos
-            <ItemListContainer/>
+            <ItemDetailContainer productId={+productId}/>
         </div>
     )
 }

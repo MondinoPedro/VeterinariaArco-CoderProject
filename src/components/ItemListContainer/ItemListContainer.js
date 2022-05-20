@@ -6,24 +6,27 @@ export default function ItemListContainer () {
 
 /*---------------------------------FUNCIONES MOD-------------------------------------*/
     const {categoryId, productId}= useParams()
-    React.useEffect(()=>{
-
-    }, [])
-
-
-    const [product, setProduct]=React.useState([])
+    const [items, setItems]= React.useState([])
     
-    const task = new Promise(resolve=>{
-        setTimeout(()=>{
-            resolve(Products)
-        },2000)
-    })
-    task.then(res =>setProduct(res))
+    React.useEffect(()=>{
+        if (categoryId){
+            setItems(Products.filter((prod)=>prod.category_id === +categoryId))
+            if(productId){
+                setItems(Products.filter((prod)=>prod.product_id === +productId))
+            }
+        }
+        else{
+            setItems(Products)
+        }
+    }, [categoryId])
+
+
+    
 /*-----------------------------------ESTILOS-----------------------------------------*/    
 
 
 
     return (
-        <ItemList p={product.filter((prod)=>prod.category_id === +categoryId)}/>
+        <ItemList items={items}/>
     )
 }

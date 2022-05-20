@@ -1,18 +1,28 @@
 import {Card, Button} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import ItemCount from "../ItemCount/ItemCount.js"
 export default  function Item ({product}) {
+
+
+    const navigate=useNavigate()
 
     const onAdd =(cant)=>{
         alert(`Se han agregado ${cant} articulos a su carrito. `)
         
         }
+
+
+    const containerStyle={
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        
+    }
     
     const cardStyle={
-        width: "18rem",
+        maxWidth: "18rem",
         margin:"20px",
         color:"#ccc",
-        textAlign:"center",
         padding:"20px",
         borderRadius:"6px",
         border:"2px solid #111",
@@ -20,11 +30,13 @@ export default  function Item ({product}) {
     }
 
     const imageStyle = {
-        maxWidth:"100%"
+        maxWidth:"100%",
+        maxHeight:"100%",
     }
 
     const cardBodyStyle={
         fontSize:"15px",
+        textAlign:"center",
         
 
     }
@@ -38,7 +50,8 @@ export default  function Item ({product}) {
     }
 
     return (
-            <Card style={cardStyle}>
+        <div style={containerStyle}>
+            <Card style={cardStyle} onClick={() => navigate(`/product/${product.product_id}`)}>
             <Card.Img variant="top" src={product.image} style={imageStyle}/>
             <Card.Body style={cardBodyStyle}>
                 <Card.Title><h2>{product.title}</h2></Card.Title>
@@ -46,12 +59,13 @@ export default  function Item ({product}) {
                     <h4>Stock: {product.stock} Unidades</h4>
                     <h4>${product.price}</h4>
                 </Card.Text>
-            <Link to="/product">    
+                
                 <Button variant="primary" style={buttonStyle}>Mas Detalles</Button>
-            </Link>    
+               
             </Card.Body>
             <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/>
             </Card>
+        </div>
     )
 
 }

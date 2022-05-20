@@ -1,33 +1,41 @@
 import React from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { Products } from '../Data/Products'
-import { useParams } from 'react-router-dom'
 
-export default function ItemDetailContainer(){ 
+
+export default function ItemDetailContainer({productId}){ 
     
-    const [data, setData]=React.useState({})
     
+    const [data, setData]=React.useState([])
     React.useEffect(()=>{
-        const getData= new Promise(resolve=>{
-            setTimeout(()=>{
-                resolve(Products[0]);
-            });
-        });
-        getData.then(res=>setData(res));
-    }, []);
+        if (productId){
+        setData(Products.find(prod=>prod.product_id === productId))
+        }
+        
+        }, [productId]);
+   
 
+    const containerDetail={
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        backgroundColor:"#928"
+    }
     const bodyStyle={
+
+        width:"50%",
     
-        width:"50%"
 
     }
     const itemDetailStyle ={
-
+        
     }
     return(
-        <body style={bodyStyle}>
-            <ItemDetail style="itemDetailStyle" data={data}/>
-        </body>
+        <div style={containerDetail}>
+            <body style={bodyStyle}>
+                <ItemDetail style={itemDetailStyle} data={data}/>
+            </body>
+        </div>
     )
     
 }

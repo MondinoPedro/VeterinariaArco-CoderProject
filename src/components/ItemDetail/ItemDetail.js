@@ -13,15 +13,18 @@ export default function ItemDetail({data}){
         width:"100%",
         height:"550px",
         backgroundColor:"#444",
-        border:"2px solid #444",
+        border:"2px solid #111",
         borderRadius:"12px",
+        margin:"20px",
     }
     const detailImgContainerStyle ={
         width:"60%",
-        
+        height:"90%",
+        textAlign:"center",        
     }
     const imgStyle={
         maxWidth:"100%",
+        maxHeight:"100%",
     }
     const detailDescriptionContainerStyle ={
         width:"40%",

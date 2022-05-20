@@ -1,7 +1,7 @@
 
 import Item from "../Item/Item.js"
 
-export default function ItemList({p}){
+export default function ItemList({items}){
 
 
     const itemListStyle ={
@@ -13,7 +13,7 @@ export default function ItemList({p}){
 
     return(
       <div className="ItemList" style={itemListStyle}>
-          {p.map((product,index)=>(
+          {items.map((product,index)=>(
               <Item product={product} key={product.products_id}/>
           )
           )}
