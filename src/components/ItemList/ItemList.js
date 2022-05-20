@@ -5,18 +5,16 @@ export default function ItemList({p}){
 
 
     const itemListStyle ={
-        display:"flex",
-        justifyContent:"space-between",
-        alignItems:"center",
-        width:"100%", 
-        heigth:"500px",
-        backgroundColor:"#928"
+        display:"grid",
+        gridTemplateColumns:"repeat(3, 1fr)",
+        width:"100%",
+        backgroundColor:"#928",
     }
 
     return(
       <div className="ItemList" style={itemListStyle}>
           {p.map((product,index)=>(
-              <Item product={product} key={product.id}/>
+              <Item product={product} key={product.products_id}/>
           )
           )}
 

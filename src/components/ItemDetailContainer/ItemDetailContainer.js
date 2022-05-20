@@ -1,8 +1,10 @@
 import React from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { Products } from '../Data/Products'
+import { useParams } from 'react-router-dom'
 
-export default function ItemDetailContainer(){
+export default function ItemDetailContainer(){ 
+    
     const [data, setData]=React.useState({})
     
     React.useEffect(()=>{
@@ -13,15 +15,18 @@ export default function ItemDetailContainer(){
         });
         getData.then(res=>setData(res));
     }, []);
-    
+
     const bodyStyle={
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
+    
+        width:"50%"
+
+    }
+    const itemDetailStyle ={
+
     }
     return(
         <body style={bodyStyle}>
-            <ItemDetail data={data}/>
+            <ItemDetail style="itemDetailStyle" data={data}/>
         </body>
     )
     

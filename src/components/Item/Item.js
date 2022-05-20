@@ -1,6 +1,6 @@
 import {Card, Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import ItemCount from "../ItemCount/ItemCount.js"
-import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer.js"
 export default  function Item ({product}) {
 
     const onAdd =(cant)=>{
@@ -10,7 +10,7 @@ export default  function Item ({product}) {
     
     const cardStyle={
         width: "18rem",
-        margin:"10px",
+        margin:"20px",
         color:"#ccc",
         textAlign:"center",
         padding:"20px",
@@ -44,11 +44,11 @@ export default  function Item ({product}) {
                 <Card.Title><h2>{product.title}</h2></Card.Title>
                 <Card.Text>
                     <h4>Stock: {product.stock} Unidades</h4>
-                    <h4>{product.price}</h4>
+                    <h4>${product.price}</h4>
                 </Card.Text>
-                
+            <Link to="/product">    
                 <Button variant="primary" style={buttonStyle}>Mas Detalles</Button>
-                
+            </Link>    
             </Card.Body>
             <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/>
             </Card>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 export default function CartWidget ({cartCounter}) { 
 
 
@@ -26,9 +27,9 @@ export default function CartWidget ({cartCounter}) {
     return(
         <div className="container" style={containerStyle}>
             <div className="cartContainer" style={cartContainerStyle} >
-                <a href="#">
+                <Link to="/cart">
                     <img src="../cart.png" style={imgStyle}/>
-                </a>
+                </Link>
                 <b style={bStyle}>{cartCounter}</b>
             </div>
         </div>
