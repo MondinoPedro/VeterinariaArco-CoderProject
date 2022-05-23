@@ -1,5 +1,10 @@
 import React, { useEffect } from "react"
-export default function ItemCount ({stock, initial, onAdd}) {
+
+export default function ItemCount ({stock, initial}) {
+    
+        
+   
+   
 
     const [count, setCount]= React.useState(parseInt(initial))
 
@@ -52,17 +57,7 @@ export default function ItemCount ({stock, initial, onAdd}) {
     const countStyle={
         fontSize:"15px",
     }
-    const textoCarritoContainerStyle={
-        display:"flex",
-        justifyContent:"center",
-    }
-    const textoCarritoStyle = {
-        height:"28px",
-        backgroundColor:"#ccc",
-        border: "2px solid #111",
-        borderRadius:"6px",
-        cursor:"pointer",
-    }    
+      
     return(
         <>
         <div style={buttonContainerStyle}>
@@ -72,9 +67,6 @@ export default function ItemCount ({stock, initial, onAdd}) {
                 <input type={"button"} className="itemButton" style={itemButtonStyle} value="+" onClick={increaseCount} disabled={count>=stock}></input>  
             </div>
         </div> 
-        <div style={textoCarritoContainerStyle}>   
-            <input type={"button"} value="Agregar al Carrito" style={textoCarritoStyle} disabled={stock<=0} onClick={()=>onAdd(count)}></input>
-        </div>
         </>
     )
 }
