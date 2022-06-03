@@ -61,7 +61,7 @@ export default  function Item ({product}) {
                 </Card.Text>
                 
                 <Button variant="primary" style={buttonStyle} onClick={() => navigate(`/product/${product.product_id}`)}>Mas Detalles</Button>
-               
+                
             </Card.Body>
             </Card>
         </div>

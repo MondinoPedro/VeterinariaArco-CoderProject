@@ -1,13 +1,13 @@
 import React, { useEffect } from "react"
 
-export default function ItemCount ({stock, initial}) {
+export default function ItemCount ({stock, initial, onAdd}) {
     
         
    
    
 
     const [count, setCount]= React.useState(parseInt(initial))
-
+    
     useEffect(()=>{
         setCount(parseInt(initial));
     },[initial])
@@ -54,6 +54,18 @@ export default function ItemCount ({stock, initial}) {
         cursor:"pointer",
 
     }
+      
+    const textoCarritoStyle = {
+        margin:"0px 6px",
+        color:"#111",
+        backgroundColor:"#ccc",
+        border: "2px solid #111",
+        borderRadius:"6px",
+        cursor:"pointer",
+        padding:"5px",
+        textDecoration:"none",
+        
+    }  
     const countStyle={
         fontSize:"15px",
     }
@@ -67,6 +79,11 @@ export default function ItemCount ({stock, initial}) {
                 <input type={"button"} className="itemButton" style={itemButtonStyle} value="+" onClick={increaseCount} disabled={count>=stock}></input>  
             </div>
         </div> 
+        <div>
+            <input type={"button"} value={"Agregar al Carrito"} style={textoCarritoStyle} onClick={(()=>{
+                onAdd(count)
+            }) }></input>
+        </div>
         </>
     )
 }
