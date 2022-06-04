@@ -1,63 +1,38 @@
+import { contexto } from "../CartContext/CartContext.js";
+import { useContext } from "react";
+export default function Cart({item, onRemove}){
 
-import React from "react"
-export default function Cart({p}) {
-    
-    
-    const [cantidad, setCantidad]=React.useState()
-    const [titulo, setTitulo]=React.useState()
-    
-    React.useEffect(()=>{
-        p.map(element => {
-        setTitulo(element.titulo) 
-        setCantidad(element.cantidad) 
-    })
-    },[p])
-    
-    const containerStyle={
+
+    const titleContainerStyle={
+      
+        borderBottom:"2px solid #111",
         display:"flex",
-        justifyContent:"center",
-        maxWidth:"100%",
-        margin:"20px",
-    }
-    const gridContainerStyle={
-        display:"grid",
-        gridTemplateColumns:"repeat(2, minmax(300px, 1fr))",
         alignItems:"center",
-        border:"2px solid #444",
-        borderBottom:"none",
+        justifyContent:"center",
+        fontSize:"20px",
+    }
+    const cantContainerStyle={
+       
+        borderBottom:"2px solid #111",
+        borderLeft:"2px solid #111",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        fontSize:"20px",
     }
 
-    const titleStyle={
-        textAlign:"center",
-        borderBottom:"2px solid #444",
-        padding:"10px",
-    }
-
-    const cantStyle={
-        textAlign:"center",
-        borderBottom:"2px solid #444",
-        borderLeft:"2px solid #444",
-        padding:"10px",
-    }
 
     return(
-        <div style={containerStyle}>   
-            <div className="gridContainer" style={gridContainerStyle}>
-                <div className="titleContainer" style={titleStyle} >
-                        Producto:
-                </div>   
+        <>
+            <div style={titleContainerStyle}>
+                {item.titulo}
+            </div>       
                 
-                <div className="cantContainer" style={cantStyle}>
-                        Cantidad:  
-                </div>
-                <div style={titleStyle}>
-                    {titulo}
-                </div>
-                <div style={cantStyle}>
-                    {cantidad}                
-                </div>
-
+            <div style={cantContainerStyle} >
+                {item.quantity}
             </div>
-        </div> 
+                
+            
+       </>
     )
 }
