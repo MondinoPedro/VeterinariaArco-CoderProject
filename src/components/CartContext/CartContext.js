@@ -9,36 +9,43 @@ export default function CartContext({children}){
     
     const [cart, setCart]=React.useState([])
     
+
     const addItem = ({titulo, quantity,itemId}) => {
-        for (let i = 0; i < cart.length; i++) {
-            if(titulo === (cart[i].titulo)){
-                quantity=quantity + (cart[i].quantity)
-                cart.splice((cart[i]))
-                
-                
-            };
-            
-        }
-        const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId}];
-
-        setCart(newCart)
+            if (cart.length === 0){
+                const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId}];
+                setCart(newCart)
+            }
+            for (let i = 1; i <= cart.length; i++) {
+                if (titulo !== cart[i-1].titulo){
+                    const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId}];
+                    setCart(newCart)
+                }
+                if(titulo === cart[i-1].titulo){
+                    quantity= cart[i-1].quantity + quantity
+                    cart.splice(i-1, 1)
+                    const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId}];
+                    setCart(newCart)
+                } 
+            }       
     }
-    console.log(cart)
-
-    const deleteItem = ({itemId})=>{
-            
-        };
-            
-            
-        
-
     
+
+   const deleteItem = ((itemId)=>{
+        const newCart = cart.filter((item)=>item.id !== itemId)
+        setCart(newCart)
+    })
+
+    const cleanCart = (()=>{
+        setCart([])
+    })
+            
+            
 
     const valorContexto = {
         cart: cart,
-        setCart: setCart,
         addItem:addItem,
         deleteItem: deleteItem,
+        cleanCart: cleanCart,
     }
 
    
