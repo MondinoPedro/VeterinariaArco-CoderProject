@@ -40,6 +40,7 @@ export default function Cart({item}){
             padding:"5px",
             textDecoration:"none",
     }
+  
 
     return(
         <>
@@ -50,10 +51,13 @@ export default function Cart({item}){
             <div style={cantContainerStyle} >
                 {item.quantity}
             </div>
-            <div style={buttonContainerStyle} >
-                <button style={buttonStyle} onClick={((itemId)=>{deleteItem(item.id)})}>Eliminar</button>
+            <div style={cantContainerStyle} >
+                ${item.price}
             </div>
-                
+            
+            <div style={buttonContainerStyle} >
+                <button style={buttonStyle} onClick={((itemId, quantity)=>{deleteItem(item.id, item.quantity)})}>Eliminar</button>
+            </div>
             
        </>
     )

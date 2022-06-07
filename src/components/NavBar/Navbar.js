@@ -1,12 +1,11 @@
-
+import { contexto } from "../CartContext/CartContext.js";
+import { useContext } from "react";
 import { Link } from "react-router-dom"
 import CartWidget from "../CartWidget/CartWidget.js";
 
 export default function Navbar(){
-    const containerStyle = {
-      
-    }
     
+    const {counter} = useContext(contexto)
     const headerStyle = {
         display:"flex",
         alignItems:"center",
@@ -32,18 +31,18 @@ export default function Navbar(){
         marginLeft:"30px",
     }
     const linksStyle = {
-        color:"#111",
+        color:"#000",
         textDecoration:"none",
         fontSize:"26px",
 
     }
     const letterIconoStyle = {
         letterSpacing:"-8px",
-        color:"#111"
+        color:"#000"
     }
     return(
         <>
-        <div className="container" style={containerStyle}>
+        <div className="container">
             <header className="header" style={headerStyle}>
                 <Link className="header-icono" to="/" style={headerIconoStyle}><b className="icono-letter" style={letterIconoStyle}>MP</b></Link>
                 <ul className="header-links" style={headerLinksStyle}>
@@ -51,7 +50,7 @@ export default function Navbar(){
                     <li><Link to="/category/1" style={linksStyle}><h5 className="link-name">Perros</h5></Link></li>
                     <li><Link to="/category/2" style={linksStyle}><h5 className="link-name">Gatos</h5></Link></li>
                     <li><Link to="#" style={linksStyle}><h5 className="link-name">Mi perfil</h5></Link></li>
-                    <CartWidget cartCounter={"8"}/>
+                    <CartWidget cartCounter={counter}/>
                 </ul>
                 
                  

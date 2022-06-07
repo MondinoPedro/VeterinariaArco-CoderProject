@@ -13,7 +13,7 @@ export default function CartWidget ({cartCounter}) {
         alignItems:"center",
         justifyContent:"center",
         fontSize:"20px",
-        color:"#111",
+        color:"#000",
     }
 
 
@@ -22,7 +22,14 @@ export default function CartWidget ({cartCounter}) {
     }
 
     const bStyle = {
-        color:"#111",
+        color:"#000",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        width:"20px",
+        height:"20px",
+        border:"2px solid #000",
+        borderRadius:"20px"
     }
     return(
         <div className="container" style={containerStyle}>

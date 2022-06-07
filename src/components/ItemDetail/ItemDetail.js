@@ -10,7 +10,7 @@ export default function ItemDetail({data}){
     const [goToCart, setGoToCart] = React.useState(false)
 
    const onAdd = ((quantity)=>{
-        addItem({titulo: data.title, quantity: quantity, itemId: data.product_id})
+        addItem({titulo: data.title, quantity: quantity, itemId: data.product_id, price: data.price})
         setGoToCart(true)
    })
         

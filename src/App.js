@@ -12,8 +12,8 @@ function App() {
  
   return (
     <BrowserRouter>
-    <Navbar/>
-    <CartContext>    
+    <CartContext> 
+      <Navbar/>   
         <Routes>   
           <Route exact path="/" element={<ItemListContainer/>}/>
           <Route exact path="/products" element={<ItemListContainer/>}/>
