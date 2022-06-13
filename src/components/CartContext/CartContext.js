@@ -33,20 +33,13 @@ export default function CartContext({children}){
                 }
                 if(titulo === cart[i].titulo){
                     quantity = (cart[i].quantity + quantity)
-                    if(i===0 && cart.length <= 2){
+                    if(i===0){
                         setCounter(counter+ quantity - cart[i].quantity)
                         setPrecioTotal(precioTotal + (price* quantity) - cart[i].price)
                         cart.splice(0, 1)
                         const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:(price*quantity)}];
                         setCart(newCart)
                     } 
-                    if(i===0 && cart.length > 2){
-                        setCounter(counter+ quantity - cart[i].quantity)
-                        setPrecioTotal(precioTotal + (price* (quantity)))
-                        cart.splice(0, 1)
-                        const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:(price*quantity)}];
-                        setCart(newCart)
-                    }   
                     else {
                         setCounter(counter+ quantity - cart[i].quantity)
                         setPrecioTotal(precioTotal + (price* quantity) - cart[i].price)
