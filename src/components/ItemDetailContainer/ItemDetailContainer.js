@@ -1,7 +1,7 @@
 import React from 'react'
 import { getFirestore, getDoc, doc, query, where} from "firebase/firestore"
 import ItemDetail from '../ItemDetail/ItemDetail'
-import { Products } from '../Data/Products'
+
 
 
 export default function ItemDetailContainer({productId}){ 
