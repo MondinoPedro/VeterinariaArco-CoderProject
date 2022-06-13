@@ -8,13 +8,13 @@ export default function ItemList({items}){
         display:"grid",
         gridTemplateColumns:"repeat(3, 1fr)",
         width:"100%",
-        backgroundColor:"#928",
+        
     }
 
     return(
       <div className="ItemList" style={itemListStyle}>
           {items.map((product,index)=>(
-              <Item product={product} key={product.products_id}/>
+              <Item product={product} key={product.id}/>
           )
           )}
 

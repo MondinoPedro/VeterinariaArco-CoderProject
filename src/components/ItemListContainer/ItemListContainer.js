@@ -1,23 +1,28 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import ItemList from "../ItemList/ItemList.js"
-import { Products } from "../Data/Products.js"
-export default function ItemListContainer () {
+import { getFirestore, getDocs, collection, query, where} from "firebase/firestore"
+export default function ItemListContainer ({categoryId}) {
 
 /*---------------------------------FUNCIONES MOD-------------------------------------*/
-    const {categoryId, productId}= useParams()
     const [items, setItems]= React.useState([])
-    
+    const db = getFirestore()
+    const productsRef = collection(db, "products")
     React.useEffect(()=>{
-        if (categoryId){
-            setItems(Products.filter((prod)=>prod.category_id === +categoryId))
-            if(productId){
-                setItems(Products.filter((prod)=>prod.product_id === +productId))
+            if (categoryId){
+                const q = query(
+                    collection(db, "products"),
+                    where( "category_id" , "==" , categoryId )
+                );
+                getDocs(q).then(snapshots=>{
+                   setItems(snapshots.docs.map(doc =>({id: doc.id, ...doc.data()})));
+                });
             }
-        }
-        else{
-            setItems(Products)
-        }
+            else{
+                getDocs(productsRef).then(snapshots =>{
+                setItems(snapshots.docs.map(doc =>({id: doc.id, ...doc.data()})))       
+                })
+            }
     }, [categoryId])
 
 

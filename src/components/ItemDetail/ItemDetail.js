@@ -10,7 +10,7 @@ export default function ItemDetail({data}){
     const [goToCart, setGoToCart] = React.useState(false)
 
    const onAdd = ((quantity)=>{
-        addItem({titulo: data.title, quantity: quantity, itemId: data.product_id, price: data.price})
+        addItem({titulo: data.title, quantity: quantity, itemId: data.id, price: data.price})
         setGoToCart(true)
    })
         
@@ -27,15 +27,18 @@ export default function ItemDetail({data}){
             margin:"20px",
         }
         const detailImgContainerStyle ={
-            width:"50%",
-            height:"90%",        
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center",
+            width:"55%",
+            height:"100%",        
         }
         const imgStyle={
             maxWidth:"100%",
             maxHeight:"100%",
         }
         const detailDescriptionContainerStyle ={
-            width:"50%",
+            width:"45%",
             marginRight:"25px",
             textAlign:"center",
         }
@@ -62,7 +65,7 @@ export default function ItemDetail({data}){
             border: "2px solid #111",
             borderRadius:"6px",
             cursor:"pointer",
-            padding:"5px",
+            padding:"4px",
             textDecoration:"none",
         }  
     
@@ -71,7 +74,7 @@ export default function ItemDetail({data}){
     
             <div className="detailContainer" style={detailContainerStyle}>
                 <div className="detailImgContainer" style={detailImgContainerStyle}>
-                    <img src={data.image} style={imgStyle}/>
+                    <img src={data.image} style={imgStyle} alt={data.title}/>
                 </div>
                 <div className="detailDescriptionContainer" style={detailDescriptionContainerStyle}>
                     <h1 style={h1Style}>{data.title}</h1>

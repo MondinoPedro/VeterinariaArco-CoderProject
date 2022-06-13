@@ -9,7 +9,6 @@ export default function CartContainer() {
     const {cart} = useContext(contexto)
     const containerStyle ={
         textAlign:"center",
-        backgroundColor:"#a1f",
         height:"100vh",
         marginTop:"-21px",
     }

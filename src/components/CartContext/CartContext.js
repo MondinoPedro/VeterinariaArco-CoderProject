@@ -8,41 +8,86 @@ const Provider = contexto.Provider
 export default function CartContext({children}){
     
     const [cart, setCart]=React.useState([])
-    
+    const [counter, setCounter] = React.useState(0)
+    const [newCant, setNewCant] = React.useState(0)
+    const [precioTotal, setPrecioTotal] = React.useState(0)
 
-    const addItem = ({titulo, quantity,itemId}) => {
+    const addItem = ({titulo, quantity, itemId, price}) => {
             if (cart.length === 0){
-                const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId}];
+                const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price: (price*quantity)}];
                 setCart(newCart)
+                
+                setCounter(quantity)
+                
+                setPrecioTotal(price*quantity)
             }
-            for (let i = 1; i <= cart.length; i++) {
-                if (titulo !== cart[i-1].titulo){
-                    const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId}];
+            for (let i = 0; i < cart.length; i++) {
+                if (titulo !== cart[i].titulo){
+                             
+                    const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:(price*quantity)}];
                     setCart(newCart)
+
+                    setCounter(counter+quantity)
+
+                    setPrecioTotal(precioTotal + (price*quantity)) 
                 }
-                if(titulo === cart[i-1].titulo){
-                    quantity= cart[i-1].quantity + quantity
-                    cart.splice(i-1, 1)
-                    const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId}];
-                    setCart(newCart)
+                if(titulo === cart[i].titulo){
+                    quantity = (cart[i].quantity + quantity)
+                    if(i===0 && cart.length <= 2){
+                        setCounter(counter+ quantity - cart[i].quantity)
+                        setPrecioTotal(precioTotal + (price* quantity) - cart[i].price)
+                        cart.splice(0, 1)
+                        const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:(price*quantity)}];
+                        setCart(newCart)
+                    } 
+                    if(i===0 && cart.length > 2){
+                        setCounter(counter+ quantity - cart[i].quantity)
+                        setPrecioTotal(precioTotal + (price* (quantity)))
+                        cart.splice(0, 1)
+                        const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:(price*quantity)}];
+                        setCart(newCart)
+                    }   
+                    else {
+                        setCounter(counter+ quantity - cart[i].quantity)
+                        setPrecioTotal(precioTotal + (price* quantity) - cart[i].price)
+                        cart.splice(i, 1)
+                        const newCart = [...cart, {titulo: titulo, quantity:(quantity), id:itemId, price:(price*quantity)}];
+                        setCart(newCart)
+                        
+                    }               
+                    
+                    
                 } 
             }       
     }
     
 
-   const deleteItem = ((itemId)=>{
+   const deleteItem = ((itemId, quantity, price)=>{
         const newCart = cart.filter((item)=>item.id !== itemId)
         setCart(newCart)
+        setPrecioTotal(precioTotal-price)
+        setCounter(counter-quantity)
     })
 
     const cleanCart = (()=>{
         setCart([])
+        setPrecioTotal(0)
+        setCounter(0)
     })
+
+    const terminarCompra = (()=>{
+        alert(`Su compra ha sido realizada con exito. El importe a pagar es de: $${precioTotal}`)
+        cleanCart()
+    })
+
             
             
 
     const valorContexto = {
         cart: cart,
+        precioTotal:precioTotal,
+        counter: counter,
+        terminarCompra: terminarCompra,
         addItem:addItem,
         deleteItem: deleteItem,
         cleanCart: cleanCart,

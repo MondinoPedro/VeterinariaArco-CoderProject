@@ -12,14 +12,17 @@ export default  function Item ({product}) {
 
 
     const containerStyle={
-        display:"flex",
+        display:"grid",
+        gridTemplateColumns:"repeat(3, max-min(350px, 1fr))",
+        gridTemplateRows:"repeat(3, max-min(500px, 1fr))",
         justifyContent:"center",
-        alignItems:"center",
         
     }
     
     const cardStyle={
+        minWidth:"18rem",
         maxWidth: "20rem",
+        height:"500px",
         margin:"20px",
         color:"#ccc",
         padding:"20px",
@@ -27,13 +30,20 @@ export default  function Item ({product}) {
         border:"2px solid #111",
         backgroundColor:"#444",
     }
-
+    const imgContainerStyle ={
+        height:"65%",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center"
+    }
     const imageStyle = {
         maxWidth:"100%",
         maxHeight:"100%",
+
     }
 
-    const cardBodyStyle={
+    const bodyContainerStyle={
+        height:"35%",
         fontSize:"15px",
         textAlign:"center",
         
@@ -51,18 +61,19 @@ export default  function Item ({product}) {
 
     return (
         <div style={containerStyle}>
-            <Card class="cardContainer" style={cardStyle} >
-            <Card.Img variant="top" src={product.image} style={imageStyle}/>
-            <Card.Body style={cardBodyStyle}>
-                <Card.Title><h2>{product.title}</h2></Card.Title>
-                <Card.Text>
-                    <h4>Stock: {product.stock} Unidades</h4>
-                    <h4>${product.price}</h4>
-                </Card.Text>
+            <Card className="cardContainer" style={cardStyle} >
+                <div style={imgContainerStyle}>
+                    <Card.Img variant="top" src={product.image} style={imageStyle}/>
+                </div>
+                <div style={bodyContainerStyle}>
+                    <Card.Title><h2>{product.title}</h2></Card.Title>
+                    <Card.Text>
+                        <h4>Stock: {product.stock} Unidades</h4>
+                        <h4>${product.price}</h4>
+                    </Card.Text>
                 
-                <Button variant="primary" style={buttonStyle} onClick={() => navigate(`/product/${product.product_id}`)}>Mas Detalles</Button>
-                
-            </Card.Body>
+                    <Button variant="primary" style={buttonStyle} onClick={() => navigate(`/product/${product.id}`)}>Mas Detalles</Button>
+                </div>      
             </Card>
         </div>
     )

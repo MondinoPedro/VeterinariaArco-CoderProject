@@ -47,8 +47,8 @@ export default function Navbar(){
                 <Link className="header-icono" to="/" style={headerIconoStyle}><b className="icono-letter" style={letterIconoStyle}>MP</b></Link>
                 <ul className="header-links" style={headerLinksStyle}>
                     <li><Link to="/" style={linksStyle}><h5 className="link-name">Inicio</h5></Link></li>
-                    <li><Link to="/category/1" style={linksStyle}><h5 className="link-name">Perros</h5></Link></li>
-                    <li><Link to="/category/2" style={linksStyle}><h5 className="link-name">Gatos</h5></Link></li>
+                    <li><Link to="/category/perros" style={linksStyle}><h5 className="link-name">Perros</h5></Link></li>
+                    <li><Link to="/category/gatos" style={linksStyle}><h5 className="link-name">Gatos</h5></Link></li>
                     <li><Link to="#" style={linksStyle}><h5 className="link-name">Mi perfil</h5></Link></li>
                     <CartWidget cartCounter={counter}/>
                 </ul>

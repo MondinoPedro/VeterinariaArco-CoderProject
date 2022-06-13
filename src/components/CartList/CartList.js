@@ -16,7 +16,6 @@ export default function CartList() {
         
         maxWidth:"100%",
         height:"100vh",
-        backgroundColor:"#a1f",
         
     }
 

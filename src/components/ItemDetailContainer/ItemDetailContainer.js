@@ -1,4 +1,5 @@
 import React from 'react'
+import { getFirestore, getDoc, doc, query, where} from "firebase/firestore"
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { Products } from '../Data/Products'
 
@@ -8,8 +9,15 @@ export default function ItemDetailContainer({productId}){
     
     const [data, setData]=React.useState([])
     React.useEffect(()=>{
+        console.log(productId)
+        const db = getFirestore()
+        const productsRef = doc(db, "products", productId)
         if (productId){
-        setData(Products.find(prod=>prod.product_id === productId))
+            getDoc(productsRef).then(snapshot=>{
+                if(snapshot.exists()){
+                    setData({id:snapshot.id, ...snapshot.data()})
+                }
+            })
         }
         
         }, [productId]);
@@ -19,7 +27,7 @@ export default function ItemDetailContainer({productId}){
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor:"#928"
+
     }
     const bodyStyle={
 
@@ -31,11 +39,11 @@ export default function ItemDetailContainer({productId}){
         
     }
     return(
-        <div style={containerDetail}>
-            <body style={bodyStyle}>
+        <body style={containerDetail}>
+            <div style={bodyStyle}>    
                 <ItemDetail style={itemDetailStyle} data={data}/>
-            </body>
-        </div>
+            </div>
+        </body> 
     )
     
 }
