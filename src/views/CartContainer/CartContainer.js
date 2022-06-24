@@ -1,12 +1,14 @@
 import { useContext } from "react"
 import {Link} from "react-router-dom";
-import { contexto } from "../../components/CartContext/CartContext"
+import { mainContext } from "../../context/MainContext/MainContext";
+import { contexto } from "../../context/CartContext/CartContext"
 import CartList from "../../components/CartList/CartList"
 
 
 export default function CartContainer() {
 
     const {cart} = useContext(contexto)
+    const {backToMenu} = useContext(mainContext)
     const containerStyle ={
         textAlign:"center",
         height:"100vh",
@@ -35,7 +37,7 @@ export default function CartContainer() {
                 :   
                 <div style={containerStyle}>
                     <h1 style={textoStyle}>Su Carrito se encuentra vacio!</h1>
-                    <Link to="/" style={buttonStyle}>Compra Ahora!</Link>
+                    <Link to="/" style={buttonStyle} onClick={backToMenu}>Compra Ahora!</Link>
                 </div>
             }
         </div>

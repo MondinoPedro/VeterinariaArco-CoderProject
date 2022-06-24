@@ -1,6 +1,7 @@
 import React from 'react'
 import { getFirestore, getDoc, doc, query, where} from "firebase/firestore"
 import ItemDetail from '../ItemDetail/ItemDetail'
+import NavBar from '../NavBar/Navbar'
 
 
 
@@ -22,28 +23,17 @@ export default function ItemDetailContainer({productId}){
         
         }, [productId]);
    
-
-    const containerDetail={
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-
-    }
-    const bodyStyle={
-
-        width:"50%",
-    
-
-    }
-    const itemDetailStyle ={
-        
-    }
+   
     return(
-        <body style={containerDetail}>
-            <div style={bodyStyle}>    
-                <ItemDetail style={itemDetailStyle} data={data}/>
-            </div>
-        </body> 
+        <div>  
+            <NavBar/>
+            <div className="item-detail-container">                 
+                    <ItemDetail data={data}/>             
+            </div>  
+            
+               
+        </div>
+        
     )
     
 }

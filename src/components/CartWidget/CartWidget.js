@@ -2,11 +2,7 @@ import { Link } from "react-router-dom"
 export default function CartWidget ({cartCounter}) { 
 
 
-    const containerStyle = {
-        display:"flex",
-        justifyContent:"center",
-        width:"5%",
-    }
+    
 
     const cartContainerStyle = {
         display:"flex",
@@ -22,17 +18,18 @@ export default function CartWidget ({cartCounter}) {
     }
 
     const bStyle = {
-        color:"#000",
+        padding:"10px",
+        color:"#fff",
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
         width:"20px",
         height:"20px",
-        border:"2px solid #000",
+        border:"2px solid #fff",
         borderRadius:"20px"
     }
     return(
-        <div className="container" style={containerStyle}>
+        <div className="container">
             <div className="cartContainer" style={cartContainerStyle} >
                 <Link to="/cart">
                     <img src="../cart.png" style={imgStyle}/>

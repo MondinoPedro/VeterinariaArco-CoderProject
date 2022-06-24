@@ -27,60 +27,19 @@ export default function ItemCount ({stock, initial, onAdd}) {
         }
     
     }
-    const buttonContainerStyle={
-        width:"100%",
-        display:"flex",
-        justifyContent:"center",
-        margin:"15px 0px",
-    }
-    const itemButtonContainerStyle ={
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"space-between",
-        height:"28px",
-        width:"100%",
-        backgroundColor:"#ccc",
-        border: "2px solid #111",
-        borderRadius:"6px",
-        color:"#111",
-        fontSize:"18px",
-    }
-
-    const itemButtonStyle = {
-        fontSize:"20px",
-        width:"50px",
-        background: "transparent",
-        border:"none",
-        cursor:"pointer",
-
-    }
-      
-    const textoCarritoStyle = {
-        margin:"0px 6px",
-        color:"#111",
-        backgroundColor:"#ccc",
-        border: "2px solid #111",
-        borderRadius:"6px",
-        cursor:"pointer",
-        padding:"5px",
-        textDecoration:"none",
-        
-    }  
-    const countStyle={
-        fontSize:"15px",
-    }
+    
       
     return(
         <>
-        <div style={buttonContainerStyle}>
-            <div className="itemButtonContainer" style={itemButtonContainerStyle}>   
-                <input type={"button"} className="itemButton" style={itemButtonStyle} value="-" onClick={decreaseCount} disabled={count<=1}></input>
-                <p style={countStyle}>{count}</p>
-                <input type={"button"} className="itemButton" style={itemButtonStyle} value="+" onClick={increaseCount} disabled={count>=stock}></input>  
+        <div className="item-count-container">
+            <div className="item-button-container">   
+                <input type={"button"} className="item-count-button" value="-" onClick={decreaseCount} disabled={count<=1}></input>
+                {count}
+                <input type={"button"} className="item-count-button"  value="+" onClick={increaseCount} disabled={count>=stock}></input>  
             </div>
-        </div> 
+        </div>
         <div>
-            <input type={"button"} value={"Agregar al Carrito"} style={textoCarritoStyle} onClick={(()=>{
+            <input type={"button"} className="item-button" value={"Agregar al Carrito"}  onClick={(()=>{
                 onAdd(count)
             }) }></input>
         </div>

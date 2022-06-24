@@ -1,11 +1,10 @@
-import { contexto } from "../CartContext/CartContext.js";
+import { contexto } from "../../context/CartContext/CartContext.js";
 import Cart from "../Cart/Cart"
 import React, { useContext, useEffect } from "react";
-import Item from "../Item/Item.js";
+import { Link } from "react-router-dom";
 
 export default function CartList() {
     const {cleanCart} = useContext(contexto)
-    const {terminarCompra} = useContext(contexto)
     const {cart} = useContext(contexto)
     const {precioTotal} = useContext(contexto)
 
@@ -23,23 +22,25 @@ export default function CartList() {
         display:"grid",
         gridTemplateColumns:"repeat(4, minmax(300px, 1fr))",
         gridTemplateRows:`repeat(${n+1}, minmax(80px, 1fr))`,
-        border:"2px solid #111",
         borderBottom:"none",
         margin:"20px",
-        backgroundColor:"#444",
+        color:"#fff",
+        backgroundColor: "#000",
+        border: "8px solid #fff",
+        boxShadow: "0px 0px 5px 0px #000"
 
     }
     const titleContainerStyle={
       
-        borderBottom:"2px solid #111",
+        borderBottom:"2px solid #fff",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
     }
     const cantContainerStyle={
        
-        borderBottom:"2px solid #111",
-        borderLeft:"2px solid #111",
+        borderBottom:"2px solid #fff",
+        borderLeft:"2px solid #fff",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
@@ -62,10 +63,8 @@ export default function CartList() {
 
     const buttonStyle={
             margin:"10px",
-            color:"#111",
-            backgroundColor:"#ccc",
-            border: "2px solid #111",
-            borderRadius:"6px",
+            color:"#fff",
+            backgroundColor:"#000",
             cursor:"pointer",
             padding:"8px 24px",
             fontSize:"18px",
@@ -76,9 +75,11 @@ export default function CartList() {
         alignItems:"center",
         justifyContent:"center",
         fontSize:"22px",
-        borderTop:"2px solid #000",
-        margin:"20px 20px"
-        
+        border:"4px solid #fff",
+        boxShadow: "0px 0px 5px 0px #000",
+        backgroundColor:"#000",
+        margin:"20px 20px",
+        color:"#fff"
         
        
     }
@@ -108,7 +109,7 @@ export default function CartList() {
                         <h3>Cantidad:</h3>
                     </div>                                 
                         {cart.map((item)=>(
-                            <Cart item={item}/>
+                            <Cart item={item} key={item.id}/>
                     ))}
                 </div>
            
@@ -120,7 +121,7 @@ export default function CartList() {
                 <h4 style={precioTotalStyle}>$ {precioTotal}</h4> 
             </div>
             <div style={buttonContainerStyle}>
-                <button style={buttonStyle} onClick={terminarCompra}>Terminar Compra</button>
+                <Link to="/checkout" style={buttonStyle}>Terminar Compra</Link>
                 <button style={buttonStyle} onClick={cleanCart}>Vaciar Carrito</button>
             </div>                
         </div>

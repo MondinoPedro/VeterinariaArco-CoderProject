@@ -1,11 +1,11 @@
-import { contexto } from "../CartContext/CartContext.js";
+import { contexto } from "../../context/CartContext/CartContext.js";
 import { useContext } from "react";
 export default function Cart({item}){
 
     const {deleteItem} = useContext(contexto)
     const titleContainerStyle={
-      
-        borderBottom:"2px solid #111",
+        color:"#000",
+        borderBottom:"2px solid #fff",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
@@ -13,8 +13,8 @@ export default function Cart({item}){
     }
     const cantContainerStyle={
        
-        borderBottom:"2px solid #111",
-        borderLeft:"2px solid #111",
+        borderBottom:"2px solid #fff",
+        borderLeft:"2px solid #fff",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
@@ -22,8 +22,8 @@ export default function Cart({item}){
     }
     const buttonContainerStyle={
        
-        borderBottom:"2px solid #111",
-        borderLeft:"2px solid #111",
+        borderBottom:"2px solid #fff",
+        borderLeft:"2px solid #fff",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
@@ -32,10 +32,8 @@ export default function Cart({item}){
     }
 
     const buttonStyle={
-            color:"#111",
-            backgroundColor:"#ccc",
-            border: "2px solid #111",
-            borderRadius:"6px",
+            color:"#fff",
+            backgroundColor:"#000",
             cursor:"pointer",
             padding:"5px",
             textDecoration:"none",
@@ -56,7 +54,7 @@ export default function Cart({item}){
             </div>
             
             <div style={buttonContainerStyle} >
-                <button style={buttonStyle} onClick={((itemId, quantity)=>{deleteItem(item.id, item.quantity)})}>Eliminar</button>
+                <button style={buttonStyle} onClick={((itemId, quantity)=>{deleteItem(item.id, item.quantity)})}>Eliminar Item</button>
             </div>
             
        </>

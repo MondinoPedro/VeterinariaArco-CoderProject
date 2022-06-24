@@ -1,62 +1,73 @@
-import { contexto } from "../CartContext/CartContext.js";
+import { contexto } from "../../context/CartContext/CartContext.js";
+import { mainContext } from "../../context/MainContext/MainContext.js";
 import { useContext } from "react";
 import { Link } from "react-router-dom"
 import CartWidget from "../CartWidget/CartWidget.js";
 
+
 export default function Navbar(){
     
     const {counter} = useContext(contexto)
-    const headerStyle = {
+    const {backToMenu} = useContext(mainContext)
+    
+    const containerStyle ={
+        width:"100%",
+        backgroundColor:"#000",
         display:"flex",
-        alignItems:"center",
-        backgroundColor: "#444",
-        width: "100%",
+        justifyContent:"center",
+    }
+    const headerStyle = {
+        backgroundColor: "#000",
+        display:"flex",
+        justifyContent:"center",
+        width: "90%",
         height:"80px",
-        borderBottom:"2px solid #111",
+        fontFamily:"'Oswald', sans-serif"
     }
-    const headerIconoStyle = {
-        color:"#fff",
+    
+    const cartContainerStyle ={
         width:"10%",
-        paddingLeft:"20px",
-        textDecoration:"none",
-        fontSize:"50px",
-
+        display:"flex",
+        justifyContent:"flex-end",
+        alignItems:"center",
+        marginRight:"20px"
     }
+
     const headerLinksStyle = {
         listStyle:"none",
         display: "flex",
-        justifyContent:"space-around",
-        flexWrap:"wrap",
-        width:"95%",
-        marginLeft:"30px",
+        justifyContent:"flex-start",
+        alignItems:"center",
+        width:"80%",
     }
     const linksStyle = {
-        color:"#000",
+        color:"#fff",
         textDecoration:"none",
-        fontSize:"26px",
+        fontSize:"20px",
+        marginLeft:"45px"
+
 
     }
-    const letterIconoStyle = {
-        letterSpacing:"-8px",
-        color:"#000"
+    const logoStyle ={
+        fontSize:"35px",
+        color:"#fff",
+        textDecoration:"none",
+        marginRight:"20px"
     }
+    
     return(
-        <>
-        <div className="container">
+        <div style={containerStyle}>
             <header className="header" style={headerStyle}>
-                <Link className="header-icono" to="/" style={headerIconoStyle}><b className="icono-letter" style={letterIconoStyle}>MP</b></Link>
-                <ul className="header-links" style={headerLinksStyle}>
-                    <li><Link to="/" style={linksStyle}><h5 className="link-name">Inicio</h5></Link></li>
-                    <li><Link to="/category/perros" style={linksStyle}><h5 className="link-name">Perros</h5></Link></li>
-                    <li><Link to="/category/gatos" style={linksStyle}><h5 className="link-name">Gatos</h5></Link></li>
-                    <li><Link to="#" style={linksStyle}><h5 className="link-name">Mi perfil</h5></Link></li>
+                <div className="header-links" style={headerLinksStyle}>
+                    <Link className="header-logo" to="/" style={logoStyle} onClick={backToMenu} >Veterinaria Arco</Link>
+                    <Link className="header-link" to="/" style={linksStyle} onClick={backToMenu}>Inicio</Link>
+                    <a className="header-link" style={linksStyle}>Productos</a>
+                    <Link className="header-link" to="#" style={linksStyle}>Sobre Nosotros</Link>  
+                </div>
+                <div style={cartContainerStyle}>
                     <CartWidget cartCounter={counter}/>
-                </ul>
-                
-                 
+                </div>      
             </header>
-            
-        </div>
-        </>
+        </div>           
     )
 }

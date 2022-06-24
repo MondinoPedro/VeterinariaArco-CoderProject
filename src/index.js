@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './styles/style.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&display=swap" rel="stylesheet"></link>
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

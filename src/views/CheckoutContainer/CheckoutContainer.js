@@ -1,5 +1,5 @@
 import React from "react"
-import { contexto } from "../../components/CartContext/CartContext"
+import { contexto } from "../../context/CartContext/CartContext"
 import { useContext } from "react"
 import { getFirestore, collection, addDoc } from "firebase/firestore"
 import ProductDetail from "../../components/ProductDetail/ProductDetail"
@@ -40,9 +40,13 @@ export default function CheckoutContainer (){
         alignItems:"center",
         justifyContent:"center",
         marginTop:"20px",
+        backgroundColor:"#000",
+        border:"6px solid #fff",
+        boxShadow: "0px 0px 4px 0px #000",
+        color:"#fff"
     }
     const formContainerStyle ={
-        border:"2px solid #111",
+        
         maxWidth:"100%",
         maxHeight:"100%",
         textAlign:"center"
@@ -51,16 +55,21 @@ export default function CheckoutContainer (){
 
     const formStyle ={
         textAlign:"center",
+        TextDecoration:"none",
     }
     const inputStyle={
         width:"80%",
         height:"40px",
         margin:"15px",
+        border:"none",
+        padding:"5px",
+        backgroundColor:"#fff"
     }
      const buttonStyle ={
         width:"50%",
         height:"30px",
         margin:"15px",
+        backgroundColor:"#fff"
      }
      const detailContainerStyle ={
         width:"800px",
