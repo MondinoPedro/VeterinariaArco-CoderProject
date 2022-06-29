@@ -30,7 +30,6 @@ export default function Main (){
                         type === "Todos" ? 
                         <div>
                             <h2>SELECCIONA TUS PRODUCTOS!</h2>
-                            <h5>Ahorra hasta un 50% en nuestros productos seleccionados! No dejes pasar esta oportunidad!</h5> 
                         </div>
                         
                         :

@@ -39,19 +39,26 @@ export default function CheckoutContainer (){
 
     const handleSubmit =(event)=>{
         if(data.name !== undefined && data.email !==undefined && data.phone !== undefined){
-            setGoToDetail(true)
-        const order = {
-            buyer: data,
-            items: cart,
-            total: precioTotal,
-            status:"Generada",
-            date: Date.now()
-        };
-        const db = getFirestore()
-        const orderCollection = collection(db, "orders");
-        addDoc(orderCollection, order).then(({id})=>setOrderId(id))
-        };
-        updateProducts()
+            if (data.email === data.confirmEmail){
+               setGoToDetail(true)
+                    const order = {
+                    buyer: data,
+                    items: cart,
+                    total: precioTotal,
+                    status:"Generada",
+                    date: new Date.now()
+                    };
+                    const db = getFirestore()
+                    const orderCollection = collection(db, "orders");
+                    addDoc(orderCollection, order).then(({id})=>setOrderId(id))
+                    updateProducts() 
+                }
+            else{
+                alert("Los mails deben coincidir")
+            }
+                    
+            }
+            
     }
     const containerStyle = {
         height:"100%",
@@ -185,6 +192,15 @@ return(
                             type="email"
                             name="email"
                             placeholder="Email"
+                            required="required"
+                            onChange={handleChange}
+                            />
+
+                             <input
+                            style={inputStyle}
+                            type="email"
+                            name="confirmEmail"
+                            placeholder="Confirm Email"
                             required="required"
                             onChange={handleChange}
                             />
