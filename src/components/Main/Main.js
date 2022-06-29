@@ -5,9 +5,9 @@ import React from "react"
 import { useContext } from "react"
 import { mainContext } from "../../context/MainContext/MainContext"
 
+
 export default function Main (){
     const {type} = useContext(mainContext)
-    
     return(
         <div>
             <Navbar/>
@@ -34,9 +34,9 @@ export default function Main (){
                         </div>
                         
                         :
-                        <div>
                             <ItemListContainer/>
-                        </div> 
+                        
+                         
                     }
                     
                        

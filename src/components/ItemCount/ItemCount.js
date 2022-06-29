@@ -1,11 +1,13 @@
 import React, { useEffect } from "react"
+import { contexto } from "../../context/CartContext/CartContext"
+import { useContext } from "react"
 
 export default function ItemCount ({stock, initial, onAdd}) {
     
         
    
    
-
+    const {backToMain} = useContext(contexto)
     const [count, setCount]= React.useState(parseInt(initial))
     
     useEffect(()=>{
@@ -39,9 +41,17 @@ export default function ItemCount ({stock, initial, onAdd}) {
             </div>
         </div>
         <div>
-            <input type={"button"} className="item-button" value={"Agregar al Carrito"}  onClick={(()=>{
+            {stock > 0 ?
+               <input type={"button"} className="item-button" value={"Agregar al Carrito"}  onClick={(()=>{
                 onAdd(count)
-            }) }></input>
+            }) }></input> 
+            :
+            <>
+            <h6>No hay stock disponible</h6> 
+            <input type={"button"} className="item-button" value={"Volver al Inicio"}  onClick={backToMain}></input> 
+            </>
+            }
+           
         </div>
         </>
     )

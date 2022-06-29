@@ -1,30 +1,27 @@
-import { createContext, useEffect } from "react"
+import { createContext } from "react"
 import React from "react"
-
+import { useNavigate } from 'react-router-dom'
 export const contexto = createContext()
 
 const Provider = contexto.Provider
 
 export default function CartContext({children}){
-    
+    const navigate = useNavigate()
     const [cart, setCart]=React.useState([])
     const [counter, setCounter] = React.useState(0)
-    const [newCant, setNewCant] = React.useState(0)
     const [precioTotal, setPrecioTotal] = React.useState(0)
 
-    const addItem = ({titulo, quantity, itemId, price}) => {
+    const addItem = ({titulo, quantity, itemId, price, stock}) => {
             if (cart.length === 0){
-                const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price: (price*quantity)}];
+                const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:price}];
                 setCart(newCart)
-                
                 setCounter(quantity)
-                
                 setPrecioTotal(price*quantity)
             }
             for (let i = 0; i < cart.length; i++) {
                 if (titulo !== cart[i].titulo){
                              
-                    const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:(price*quantity)}];
+                    const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:price}];
                     setCart(newCart)
 
                     setCounter(counter+quantity)
@@ -37,14 +34,14 @@ export default function CartContext({children}){
                         setCounter(counter+ quantity - cart[i].quantity)
                         setPrecioTotal(precioTotal + (price* quantity) - cart[i].price)
                         cart.splice(0, 1)
-                        const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:(price*quantity)}];
+                        const newCart = [...cart, {titulo: titulo, quantity:quantity, id:itemId, price:price}];
                         setCart(newCart)
                     } 
                     else {
                         setCounter(counter+ quantity - cart[i].quantity)
                         setPrecioTotal(precioTotal + (price* quantity) - cart[i].price)
                         cart.splice(i, 1)
-                        const newCart = [...cart, {titulo: titulo, quantity:(quantity), id:itemId, price:(price*quantity)}];
+                        const newCart = [...cart, {titulo: titulo, quantity:(quantity), id:itemId, price:price}];
                         setCart(newCart)
                         
                     }               
@@ -60,6 +57,13 @@ export default function CartContext({children}){
         setCart(newCart)
         setPrecioTotal(precioTotal-price)
         setCounter(counter-quantity)
+    })
+
+    const backToMain = (()=>{
+        setCart([])
+        setPrecioTotal(0)
+        setCounter(0)
+        navigate("/")
     })
 
     const cleanCart = (()=>{
@@ -80,6 +84,7 @@ export default function CartContext({children}){
         cart: cart,
         precioTotal:precioTotal,
         counter: counter,
+        backToMain:backToMain,
         terminarCompra: terminarCompra,
         addItem:addItem,
         deleteItem: deleteItem,

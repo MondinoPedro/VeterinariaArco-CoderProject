@@ -1,6 +1,6 @@
 import { contexto } from "../../context/CartContext/CartContext.js";
 import Cart from "../Cart/Cart"
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export default function CartList() {
@@ -11,16 +11,10 @@ export default function CartList() {
 
     const n = cart.length
     
-    const containerStyle={
-        
-        maxWidth:"100%",
-        height:"100vh",
-        
-    }
 
     const gridContainerStyle={
         display:"grid",
-        gridTemplateColumns:"repeat(4, minmax(300px, 1fr))",
+        gridTemplateColumns:"repeat(4, minmax(240px, 1fr))",
         gridTemplateRows:`repeat(${n+1}, minmax(80px, 1fr))`,
         borderBottom:"none",
         margin:"20px",
@@ -44,12 +38,6 @@ export default function CartList() {
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-    }
-    const containerGridStyle={
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
-        
     }
     const buttonContainerStyle={
         margin:"10px",
@@ -93,8 +81,8 @@ export default function CartList() {
         
     }
     return(
-        <div style={containerStyle}>
-            <div style={containerGridStyle}> 
+        <div >
+            
                 <div style={gridContainerStyle}> 
                     <div style={titleContainerStyle}>
                         <h3>Producto:</h3>
@@ -106,7 +94,7 @@ export default function CartList() {
                         <h3>Precio:</h3>
                     </div> 
                     <div style={cantContainerStyle}>
-                        <h3>Cantidad:</h3>
+                        <h3>...</h3>
                     </div>                                 
                         {cart.map((item)=>(
                             <Cart item={item} key={item.id}/>
@@ -114,7 +102,6 @@ export default function CartList() {
                 </div>
            
                                     
-            </div>
             
             <div style={precioTotalContainerStyle}>
                 <h3 style={textoPrecioTotalStyle}>Precio Total: </h3>    

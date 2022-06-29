@@ -4,7 +4,7 @@ export default function Cart({item}){
 
     const {deleteItem} = useContext(contexto)
     const titleContainerStyle={
-        color:"#000",
+        color:"#fff",
         borderBottom:"2px solid #fff",
         display:"flex",
         alignItems:"center",
@@ -36,7 +36,6 @@ export default function Cart({item}){
             backgroundColor:"#000",
             cursor:"pointer",
             padding:"5px",
-            textDecoration:"none",
     }
   
 

@@ -1,4 +1,4 @@
-import { createContext, useEffect } from "react"
+import { createContext } from "react"
 import React from "react"
 
 
@@ -53,6 +53,7 @@ export default function MainContext({children}){
     setType("Todos")   
         
     })
+
     const backToSubMenu = (()=>{
         setAlimento(false)
         setFilter(lastFilterValue) 
