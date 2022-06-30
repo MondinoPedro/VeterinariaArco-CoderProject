@@ -12,11 +12,9 @@ export default  function Item ({product}) {
     return (
         <div className='grid-container'>
             <div className="card-container" style={{borderRadius:"0px"}}>
-                <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
                     <div className="card-img-container">
                         <img variant="top" src={product.image} className="card-img"/>
                     </div>
-                </div>
                 
                     <h4 className="card-title">{product.title}</h4>
                     <div className="card-text-container">
